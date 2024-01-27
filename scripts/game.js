@@ -1,5 +1,5 @@
-import gameData from './gamedata.js';
-import updateText from './typewriter.js';
+import gameData from './gamedata.js?v=1.1';
+import updateText from './typewriter.js?v=1.1';
 
 let currentStage = 0;
 let previousStage = 0;
