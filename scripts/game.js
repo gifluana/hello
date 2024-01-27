@@ -2,6 +2,7 @@ import gameData from './gamedata.js';
 import updateText from './typewriter.js';
 
 let currentStage = 0;
+let previousStage = 0;
 let userInput = document.getElementById('userInput');
 let textDisplay = document.getElementById('textDisplay');
 
@@ -31,6 +32,17 @@ async function handleInput(event) {
         event.preventDefault();
         let inputText = userInput.value.trim().toLowerCase(); // Convert input to lowercase
 
+        // If user types 'back', go to the previous stage
+        if (inputText === 'back') {
+            if (previousStage >= 0) {
+                currentStage = previousStage;
+                await updateText('you forget what I said? Alright, I\'ll say it again.', textDisplay); // Display the message
+                await updateText(gameData[currentStage].question, textDisplay); // Display the previous question
+            }
+            userInput.value = ''; // Clear input field
+            return;
+        }
+
         // Store user's name if current stage is 1
         if (currentStage === 1) {
             userAnswers.name = inputText;
@@ -43,6 +55,7 @@ async function handleInput(event) {
             let foundAnswer = Object.keys(gameData[currentStage].answers).find(answer => inputText.includes(answer)); // Check if input includes any answer
             if (foundAnswer) {
                 response = gameData[currentStage].answers[foundAnswer].response;
+                previousStage = currentStage; // Store the current stage as the previous stage
                 currentStage = gameData[currentStage].answers[foundAnswer].nextStage; // Move to the specified stage
             } else {
                 // Generate defaultAnswer dynamically
@@ -52,6 +65,7 @@ async function handleInput(event) {
                     response = gameData[currentStage].defaultAnswer;
                 }
                 if (gameData[currentStage].acceptAnyInput) {
+                    previousStage = currentStage; // Store the current stage as the previous stage
                     currentStage = gameData[currentStage].nextStage; // Move to the next stage if any input is acceptable
                 }
             }
