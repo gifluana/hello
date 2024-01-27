@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello.</title>
+    <title>[start connection]</title>
     <link rel="icon" href="./img/icon.png" type="image/png?v=1.0">
     <link rel="stylesheet" href="https://use.typekit.net/whu8fuz.css">
     <link rel="stylesheet" href="./styles/style.css?v=1.0">
+    <link rel="stylesheet" href="./styles/reset.css">
     <script src="./scripts/game.js?v=1.0" type="module" defer></script>
 </head>
 <body class="body">
-    <img src="./img/scanlines.png?v=1.0" class="scan no-events">
+    <img src="./img/scanlines.png" class="scan no-events">
+    <img src="./img/background.jpg" class="black-background no-events">
+    <img src="./img/background.jpg" class="black-background-2 no-events">
+    <p id="playButton" class="play-button">[start connection]</p>
     <div class="container">
-        <p id="playButton" class="start-button">[start conection]</p>
         <p id="textDisplay" class="text-display no-events"></p>
-        <input id="userInput" type="text" placeholder="Your Answer" class="user-input">
+        <input id="userInput" type="text" placeholder="type here" class="user-input hidden">
     </div>
 </body>
 </html>
