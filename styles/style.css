@@ -1,0 +1,137 @@
+/* Variables */
+:root {
+  --color-light: #c8c8c8;
+  --color-dark: #0a0a0a;
+  --font-input: "input-serif", serif;
+}
+
+/* Reset Styles */
+html, body, .container, .text-display, .start-button {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-dark);
+}
+
+/* Container Styles */
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font: 500 3em var(--font-input);
+  color: var(--color-light);
+  animation: colorChange 1s infinite;
+}
+
+/* Text Display Styles */
+.text-display {
+  width: 80%;
+  text-align: center;
+  padding: 0 2em;
+  display: none;
+}
+
+.text-display:after {
+  content: '_';
+  animation: underscore-blink 1s infinite;
+}
+
+.text-display::before {
+  content: '> ';
+}
+
+/* Start Button Styles */
+.start-button {
+  font-size: 0.75em;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.start-button:hover {
+  color: #ededed;
+}
+
+/* Scan Styles */
+.scan {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.no-events {
+  pointer-events: none;
+}
+
+/* User Input Styles */
+.user-input:not(.hidden) {
+  animation: slideUp 0.2s ease-out forwards;
+  visibility: visible;
+}
+
+.user-input {
+  position: absolute;
+  transform: translateY(250%);
+  background: transparent;
+  text-align: center;
+  padding: 1em 5em;
+  border: 1px solid var(--color-light);
+  font: 500 0.5em var(--font-input);
+  color: var(--color-light);
+  outline: none;
+  box-shadow: none;
+}
+
+/* Hidden Styles */
+.hidden {
+  visibility: hidden;
+}
+
+/* Keyframes */
+@keyframes colorChange {
+  0%, 49% { color: #ececec; }
+  50%, 100% { color: var(--color-light); }
+}
+
+@keyframes underscore-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(270%); }
+  to { transform: translateY(250%); }
+}
+
+@keyframes scaleDown {
+  from { transform: translateY(250%) scale(1); }
+  to { transform: translateY(250%) scale(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .user-input {
+    position: absolute;
+    transform: translateY(250%);
+    background: transparent;
+    text-align: center;
+    padding: 1em 0;
+    border: 0.1em solid var(--color-light);
+    font: 500 0.8em var(--font-input);
+    color: var(--color-light);
+    outline: none;
+    box-shadow: none;
+  }
+}
