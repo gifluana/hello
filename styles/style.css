@@ -39,7 +39,7 @@ body {
     height: 100vh;
     background: rgb(32, 32, 32);
     background: radial-gradient(circle, rgb(32, 32, 32) 0%, rgba(0, 0, 0, 1) 100%);
-    cursor: none;
+    cursor: default;
 }
 
 .container {
@@ -224,6 +224,10 @@ body {
 }
 
 @media screen and (min-width: 1280px) {
+    body {
+        cursor: none;
+    }
+
     .cursor {
         visibility: visible;
         width: 5%;
@@ -277,6 +281,10 @@ body {
 }
 
 @media screen and (min-width: 1700px) {
+    body {
+        cursor: none;
+    }
+
     .cursor {
         visibility: visible;
         width: 5%;
