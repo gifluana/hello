@@ -1,6 +1,6 @@
-import gameData from './gamedata.js?v=1.1';
 import updateText from './typewriter.js?v=1.1';
 
+let gameData = [];
 let currentStage = 0;
 let previousStage = 0;
 let userInput = document.getElementById('userInput');
@@ -11,6 +11,17 @@ let userAnswers = {};
 
 // Get the play button
 const playButton = document.getElementById('playButton');
+
+// Function to fetch game data from the API
+async function fetchGameData() {
+    fetch('http://18.221.83.53:3000/stages')
+        .then(response => response.json())
+        .then(data => { gameData = data; })
+        .catch(error => { console.error('Error:', error); });
+}
+
+// Call fetchGameData when the script loads
+fetchGameData();
 
 // Function to play sound effect
 function playSound(soundFile) {
